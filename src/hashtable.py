@@ -26,13 +26,13 @@ class HashTable:
         return hash(key)
 
 
-    def _hash_djb2(self, key):
-        '''
-        Hash an arbitrary key using DJB2 hash
+    # def _hash_djb2(self, key):
+    #     '''
+    #     Hash an arbitrary key using DJB2 hash
 
-        OPTIONAL STRETCH: Research and implement DJB2
-        '''
-        pass
+    #     OPTIONAL STRETCH: Research and implement DJB2
+    #     '''
+    #     pass
 
 
     def _hash_mod(self, key):
@@ -51,9 +51,17 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # Create a new linked pair
+        linked_pair = LinkedPair(key, value)
+        # Hash the key to create the index
+        index = self.__hash_mod(key)
 
+        # TODO Deal with collision
+        # Check if there's already a Linked Pair at index
+            # Link to the last key pair
 
+        # Insert the linked pair in the HashTable at the index
+        self.storage[index] = linked_pair
 
     def remove(self, key):
         '''
@@ -63,6 +71,7 @@ class HashTable:
 
         Fill this in.
         '''
+        # TODO
         pass
 
 
@@ -74,6 +83,7 @@ class HashTable:
 
         Fill this in.
         '''
+        # TODO
         pass
 
 
@@ -84,6 +94,8 @@ class HashTable:
 
         Fill this in.
         '''
+        # TODO
+        # 
         pass
 
 
