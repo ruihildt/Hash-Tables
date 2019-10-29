@@ -52,16 +52,28 @@ class HashTable:
         Fill this in.
         '''
         # Create a new linked pair
-        linked_pair = LinkedPair(key, value)
-        # Hash the key to create the index
-        index = self.__hash_mod(key)
+        new_linked_pair = LinkedPair(key, value)
+        # Create index from the hashed key
+        index = self._hash_mod(key)
+        storage_index = self.storage[index]
 
-        # TODO Deal with collision
-        # Check if there's already a Linked Pair at index
-            # Link to the last key pair
+        # Check if there is a Linked Pair List at index
+        if storage_index:
+            # Traverse the Linked Pair List
+            while storage_index.next is not None:
+                # If the new linked pair key is already present, update the value and return
+                if storage_index.key == key:
+                    storage_index.value == value
+                    return
+                # Move to the next linked pair
+                storage_index = storage_index.next
+            # Add the new linked pair to the end of the Linked Pair List
+            storage_index.next = new_linked_pair
 
-        # Insert the linked pair in the HashTable at the index
-        self.storage[index] = linked_pair
+        # Otherwise, insert the new Linked Pair at the index
+        else:
+            storage_index = new_linked_pair
+
 
     def remove(self, key):
         '''
@@ -84,7 +96,22 @@ class HashTable:
         Fill this in.
         '''
         # TODO
-        pass
+        # Create index from the hashed key
+        index = self._hash_mod(key)
+        storage_index = self.storage[index]
+
+        # Check if there is a Linked Pair List at index
+        if storage_index:
+            while storage_index.next is not None:
+                # If there is a corresponding key, return its value
+                if storage_index.key == key:
+                    return storage_index.value
+                # Move to the next linked pair
+                storage_index = storage_index.next
+
+        # Check if there's something at the index
+        else:
+            return None
 
 
     def resize(self):
@@ -95,7 +122,6 @@ class HashTable:
         Fill this in.
         '''
         # TODO
-        # 
         pass
 
 
