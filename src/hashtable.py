@@ -26,13 +26,13 @@ class HashTable:
         return hash(key)
 
 
-    def _hash_djb2(self, key):
-        '''
-        Hash an arbitrary key using DJB2 hash
+    # def _hash_djb2(self, key):
+    #     '''
+    #     Hash an arbitrary key using DJB2 hash
 
-        OPTIONAL STRETCH: Research and implement DJB2
-        '''
-        pass
+    #     OPTIONAL STRETCH: Research and implement DJB2
+    #     '''
+    #     pass
 
 
     def _hash_mod(self, key):
@@ -51,8 +51,28 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # Create a new linked pair
+        new_linked_pair = LinkedPair(key, value)
+        # Create index from the hashed key
+        index = self._hash_mod(key)
+        storage_index = self.storage[index]
 
+        # Check if there is a Linked Pair List at index
+        if storage_index:
+            # Traverse the Linked Pair List
+            while storage_index.next is not None:
+                # If the new linked pair key is already present, update the value and return
+                if storage_index.key == key:
+                    storage_index.value == value
+                    return
+                # Move to the next linked pair
+                storage_index = storage_index.next
+            # Add the new linked pair to the end of the Linked Pair List
+            storage_index.next = new_linked_pair
+
+        # Otherwise, insert the new Linked Pair at the index
+        else:
+            storage_index = new_linked_pair
 
 
     def remove(self, key):
@@ -63,6 +83,7 @@ class HashTable:
 
         Fill this in.
         '''
+        # TODO
         pass
 
 
@@ -74,7 +95,23 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # TODO
+        # Create index from the hashed key
+        index = self._hash_mod(key)
+        storage_index = self.storage[index]
+
+        # Check if there is a Linked Pair List at index
+        if storage_index:
+            while storage_index.next is not None:
+                # If there is a corresponding key, return its value
+                if storage_index.key == key:
+                    return storage_index.value
+                # Move to the next linked pair
+                storage_index = storage_index.next
+
+        # Check if there's something at the index
+        else:
+            return None
 
 
     def resize(self):
@@ -84,6 +121,7 @@ class HashTable:
 
         Fill this in.
         '''
+        # TODO
         pass
 
 
